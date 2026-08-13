@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f3d2f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Gestión & Cuentas — Fran C.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="auth-screen" class="auth-screen" hidden>
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="2" y="14" width="10" height="10" rx="2" fill="currentColor" opacity=".35"/>
+            <rect x="10" y="6" width="10" height="10" rx="2" fill="currentColor" opacity=".65"/>
+            <rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <p class="brand-name">Gestión &amp; Cuentas</p>
+          <p class="brand-sub">Fran C.</p>
+        </div>
+      </div>
+      <h1>Iniciar sesión</h1>
+      <p class="auth-lede">Entrá con tu cuenta para ver y guardar tus datos en la nube.</p>
+      <form id="form-login" class="auth-form">
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="username" placeholder="tu@email.com" value="frantiti@gmail.com" />
+        </label>
+        <label class="field">
+          <span>Contraseña</span>
+          <input type="password" name="password" required autocomplete="current-password" placeholder="••••••••" />
+        </label>
+        <p class="auth-error" id="login-error" hidden></p>
+        <button type="submit" class="btn primary auth-submit" id="btn-login">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="app" id="app-shell" hidden>
+    <header class="mobile-topbar" aria-label="Cabecera">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="14" width="10" height="10" rx="2" fill="currentColor" opacity=".35"/>
+          <rect x="10" y="6" width="10" height="10" rx="2" fill="currentColor" opacity=".65"/>
+          <rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="mobile-topbar-text">
+        <p class="brand-name">Gestión &amp; Cuentas</p>
+        <p class="brand-sub">Fran C.</p>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="brand desktop-only">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="2" y="14" width="10" height="10" rx="2" fill="currentColor" opacity=".35"/>
+            <rect x="10" y="6" width="10" height="10" rx="2" fill="currentColor" opacity=".65"/>
+            <rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <p class="brand-name">Gestión &amp; Cuentas</p>
+          <p class="brand-sub">Fran C.</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Secciones">
+        <button class="nav-item active" data-view="inicio">
+          <span class="nav-icon" aria-hidden="true">◈</span>
+          <span class="nav-text">Inicio</span>
+        </button>
+        <p class="nav-label desktop-only">Reservas</p>
+        <button class="nav-item" data-view="calendario">
+          <span class="nav-icon" aria-hidden="true">▣</span>
+          <span class="nav-text">Calendario</span>
+        </button>
+        <p class="nav-label desktop-only">Dinero</p>
+        <button class="nav-item" data-view="cuotas">
+          <span class="nav-icon" aria-hidden="true">◎</span>
+          <span class="nav-text">Cuotas</span>
+        </button>
+        <p class="nav-label desktop-only">App</p>
+        <button class="nav-item" data-view="ajustes">
+          <span class="nav-icon" aria-hidden="true">✦</span>
+          <span class="nav-text">Ajustes</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot desktop-only">
+        <p id="sidebar-user">Sesión en la nube</p>
+        <button type="button" class="btn-reset" id="btn-logout">Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- INICIO -->
+      <section class="view active" id="view-inicio">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Panel general</p>
+            <h1 id="inicio-period-title">Esta semana</h1>
+            <p class="lede">Resumen de reservas, cobros y pagos. Filtra por semana o por mes.</p>
+          </div>
+          <div class="header-actions inicio-filters">
+            <div class="seg" id="inicio-mode">
+              <button type="button" class="seg-btn active" data-inicio-mode="semana">Semana</button>
+              <button type="button" class="seg-btn" data-inicio-mode="mes">Mes</button>
+            </div>
+            <button type="button" class="btn ghost" id="inicio-prev">← Anterior</button>
+            <button type="button" class="btn ghost" id="inicio-next">Siguiente →</button>
+          </div>
+        </header>
+        <div class="kpi-row inicio-main-kpis" id="inicio-kpis"></div>
+        <div class="kpi-row tight" id="inicio-kpis-sec"></div>
+        <div class="split-2">
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Próximas reservas</h2>
+              <span class="chip" id="inicio-proximas-chip">Desde hoy</span>
+            </div>
+            <ul class="timeline" id="inicio-timeline"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Alertas de dinero</h2></div>
+            <ul class="alert-list" id="inicio-alerts"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDARIO -->
+      <section class="view" id="view-calendario">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Reservas</p>
+            <h1>Calendario</h1>
+            <p class="lede">Vista mensual completa con todas las reservas del mes.</p>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="btn primary" id="btn-new-reserva">+ Nueva reserva</button>
+          </div>
+        </header>
+        <div class="week-bar desktop-cal" id="month-bar">
+          <button type="button" class="icon-btn" data-month="-1" aria-label="Mes anterior">‹</button>
+          <p id="month-label-calendario"><span>Mes</span> —</p>
+          <button type="button" class="icon-btn" data-month="1" aria-label="Mes siguiente">›</button>
+        </div>
+        <div class="week-bar mobile-cal" id="week-bar-mobile">
+          <button type="button" class="icon-btn" data-week="-1" aria-label="Semana anterior">‹</button>
+          <p id="week-label-calendario"><span>Semana</span> —</p>
+          <button type="button" class="icon-btn" data-week="1" aria-label="Semana siguiente">›</button>
+        </div>
+
+        <div class="cal-month-wrap desktop-cal" id="month-board-wrap">
+          <div class="cal-banner">
+            <span>CALENDARIO · MES COMPLETO</span>
+          </div>
+          <div class="month-dow" aria-hidden="true">
+            <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+          </div>
+          <div class="month-board" id="month-board" aria-label="Calendario del mes"></div>
+          <div class="legend">
+            <span><i class="dot paid"></i> Pagado</span>
+            <span><i class="dot pending"></i> Con abono / pendiente</span>
+            <span class="legend-tags">
+              <span class="tag inflable">Inflable</span>
+              <span class="tag coctel">Cóctel</span>
+              <span class="tag mixto">Mixto</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="cal-day-view mobile-cal">
+          <div class="day-strip" id="day-strip" role="tablist" aria-label="Días de la semana"></div>
+          <div class="day-title-row">
+            <h2 class="day-title" id="day-title">—</h2>
+            <button type="button" class="eye-btn" id="btn-view-day" aria-label="Ver día completo" title="Ver día completo">
+              <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <div class="day-summary" id="day-summary"></div>
+          <div class="day-list" id="day-list" aria-label="Reservas del día"></div>
+          <div class="legend">
+            <span><i class="dot paid"></i> Pagado</span>
+            <span><i class="dot pending"></i> Con abono / pendiente</span>
+            <span class="legend-tags">
+              <span class="tag inflable">Inflable</span>
+              <span class="tag coctel">Cóctel</span>
+              <span class="tag mixto">Mixto</span>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUOTAS -->
+      <section class="view" id="view-cuotas">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Dinero · Planes de pago</p>
+            <h1>Cuentas en cuotas</h1>
+            <p class="lede">Deudas grandes partidas. Paga cuota por cuota.</p>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="btn primary" id="btn-new-plan">+ Nueva deuda en cuotas</button>
+          </div>
+        </header>
+        <div class="split-2" id="plans-list"></div>
+      </section>
+
+      <!-- AJUSTES -->
+      <section class="view" id="view-ajustes">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Personalización</p>
+            <h1>Ajustes</h1>
+            <p class="lede">Tipografía más cómoda y colores a tu gusto. Se guarda en este navegador.</p>
+          </div>
+        </header>
+
+        <div class="prefs-stack">
+          <article class="prefs-card">
+            <div class="prefs-card-head">
+              <h2>Tamaño del texto</h2>
+              <p>Sube o baja el tamaño de toda la app.</p>
+            </div>
+            <div class="font-size-control" role="group" aria-label="Tamaño de tipografía">
+              <button type="button" class="font-size-btn" id="font-smaller" aria-label="Texto más pequeño">A−</button>
+              <div class="font-size-meter">
+                <span class="font-size-sample" id="font-size-sample">Aa</span>
+                <span class="font-size-label" id="font-size-label">Normal</span>
+              </div>
+              <button type="button" class="font-size-btn" id="font-larger" aria-label="Texto más grande">A+</button>
+            </div>
+          </article>
+
+          <article class="prefs-card">
+            <div class="prefs-card-head">
+              <h2>Colores de la app</h2>
+              <p>Elige una paleta. Cambia menú, botones y acentos.</p>
+            </div>
+            <div class="theme-grid" id="theme-grid" role="radiogroup" aria-label="Paleta de colores"></div>
+          </article>
+
+          <article class="prefs-card">
+            <div class="prefs-card-head">
+              <h2>Colores a medida</h2>
+              <p>Ajusta el color principal y el de acento.</p>
+            </div>
+            <div class="custom-colors">
+              <label class="color-field">
+                <span>Principal</span>
+                <input type="color" id="color-primary" value="#1f3d2f" />
+              </label>
+              <label class="color-field">
+                <span>Acento</span>
+                <input type="color" id="color-accent" value="#4a7c59" />
+              </label>
+              <button type="button" class="btn ghost" id="btn-reset-theme">Volver a Bosque</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" hidden></div>
+
+  <!-- MODAL RESERVA -->
+  <dialog class="modal" id="modal-reserva">
+    <form method="dialog" id="form-reserva" class="modal-card">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow" id="reserva-modal-eyebrow">Nueva reserva</p>
+          <h2 id="reserva-modal-title">Agendar</h2>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">×</button>
+      </header>
+
+      <input type="hidden" name="id" />
+
+      <div class="form-grid">
+        <div class="field full resource-field">
+          <div class="resource-field-head">
+            <span>Qué se reserva</span>
+            <p class="field-hint">Elige uno o varios ítems para el mismo evento.</p>
+          </div>
+          <div class="resource-picks" id="resource-picks" role="group" aria-label="Ítems a reservar"></div>
+        </div>
+        <label class="field">
+          <span>Fecha del evento</span>
+          <input type="date" name="date" required />
+        </label>
+        <label class="field">
+          <span>Cliente</span>
+          <input type="text" name="client" placeholder="Nombre del cliente" required autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Teléfono (opcional)</span>
+          <input type="tel" name="phone" placeholder="+56 9 ..." />
+        </label>
+        <label class="field">
+          <span>Total $</span>
+          <input type="number" name="total" min="0" step="1000" required />
+        </label>
+        <label class="field">
+          <span>Abono $</span>
+          <input type="number" name="paid" min="0" step="1000" value="0" />
+        </label>
+        <label class="field">
+          <span>Método de pago</span>
+          <select name="method">
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia</option>
+            <option value="pendiente">Sin pago aún</option>
+          </select>
+        </label>
+
+        <div class="field full location-block">
+          <p class="location-block-title">Instalación / entrega</p>
+          <div class="form-grid nested">
+            <label class="field">
+              <span>Comuna</span>
+              <select name="comuna" id="reserva-comuna">
+                <option value="">Selecciona comuna</option>
+                <option value="Codegua">Codegua</option>
+                <option value="Graneros">Graneros</option>
+                <option value="Mostazal">Mostazal</option>
+                <option value="Angostura">Angostura</option>
+                <option value="Machalí">Machalí</option>
+                <option value="Rancagua">Rancagua</option>
+                <option value="Olivar">Olivar</option>
+                <option value="Gultro">Gultro</option>
+                <option value="Lo Miranda">Lo Miranda</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </label>
+            <label class="field" id="field-comuna-otra" hidden>
+              <span>Otra comuna</span>
+              <input type="text" name="comunaOtra" placeholder="Escribe la comuna" disabled />
+            </label>
+            <label class="field full">
+              <span>Dirección de instalación o entrega</span>
+              <input type="text" name="address" placeholder="Calle, número, referencia..." autocomplete="street-address" />
+            </label>
+            <label class="field">
+              <span>Valor instalación / entrega $</span>
+              <input type="number" name="deliveryFee" min="0" step="1000" value="0" />
+            </label>
+            <label class="field">
+              <span>Google Maps (enlace)</span>
+              <input type="url" name="mapsUrl" placeholder="https://maps.google.com/..." inputmode="url" />
+            </label>
+          </div>
+        </div>
+
+        <label class="field full">
+          <span>Notas</span>
+          <textarea name="notes" rows="2" placeholder="Hora, extras, contacto en el lugar..."></textarea>
+        </label>
+      </div>
+
+      <p class="form-hint" id="reserva-saldo-hint"></p>
+
+      <footer class="modal-foot">
+        <button type="button" class="btn danger ghost" id="btn-delete-reserva" hidden>Eliminar</button>
+        <div class="modal-foot-right">
+          <button type="button" class="btn ghost" data-close>Cancelar</button>
+          <button type="submit" class="btn primary">Guardar</button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL VER RESERVA -->
+  <dialog class="modal" id="modal-ver-reserva">
+    <div class="modal-card view-card">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow">Detalle</p>
+          <h2 id="ver-reserva-title">Reserva</h2>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">×</button>
+      </header>
+      <div class="view-body" id="ver-reserva-body"></div>
+      <footer class="modal-foot">
+        <div class="modal-foot-right">
+          <button type="button" class="btn ghost" data-close>Cerrar</button>
+          <button type="button" class="btn primary" id="btn-edit-from-view">Editar</button>
+        </div>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- MODAL VER DÍA -->
+  <dialog class="modal" id="modal-ver-dia">
+    <div class="modal-card view-card wide">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow">Día completo</p>
+          <h2 id="ver-dia-title">—</h2>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">×</button>
+      </header>
+      <div class="view-day-summary" id="ver-dia-summary"></div>
+      <div class="view-body" id="ver-dia-body"></div>
+      <footer class="modal-foot">
+        <div class="modal-foot-right">
+          <button type="button" class="btn ghost" data-close>Cerrar</button>
+          <button type="button" class="btn primary" id="btn-add-from-day">+ Agregar reserva</button>
+        </div>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- MODAL PLAN CUOTAS -->
+  <dialog class="modal" id="modal-plan">
+    <form method="dialog" id="form-plan" class="modal-card">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow">Cuotas</p>
+          <h2>Nueva deuda en cuotas</h2>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">×</button>
+      </header>
+      <div class="form-grid">
+        <label class="field">
+          <span>Nombre</span>
+          <input type="text" name="title" required placeholder="Ej. Compra tobogán" />
+        </label>
+        <label class="field">
+          <span>Proveedor</span>
+          <input type="text" name="provider" placeholder="InflaSur..." />
+        </label>
+        <label class="field">
+          <span>Total $</span>
+          <input type="number" name="total" min="0" step="1000" required />
+        </label>
+        <label class="field">
+          <span>Nº de cuotas</span>
+          <input type="number" name="installments" min="2" max="24" value="4" required />
+        </label>
+        <label class="field">
+          <span>Primera cuota</span>
+          <input type="date" name="firstDue" required />
+        </label>
+        <label class="field">
+          <span>Categoría</span>
+          <input type="text" name="category" placeholder="Equipo, vehículo..." />
+        </label>
+      </div>
+      <footer class="modal-foot">
+        <div class="modal-foot-right">
+          <button type="button" class="btn ghost" data-close>Cancelar</button>
+          <button type="submit" class="btn primary">Crear plan</button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL EDITAR CUOTA -->
+  <dialog class="modal" id="modal-cuota">
+    <form method="dialog" id="form-cuota" class="modal-card">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow" id="cuota-modal-eyebrow">Cuotas</p>
+          <h2 id="cuota-modal-title">Editar cuota</h2>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">×</button>
+      </header>
+      <input type="hidden" name="planId" />
+      <input type="hidden" name="n" />
+      <div class="form-grid">
+        <label class="field">
+          <span>Fecha de pago / vencimiento</span>
+          <input type="date" name="due" required />
+        </label>
+        <label class="field">
+          <span>Estado</span>
+          <select name="paid">
+            <option value="false">Pendiente</option>
+            <option value="true">Pagada</option>
+          </select>
+        </label>
+        <label class="field full">
+          <span>Monto $</span>
+          <input type="number" name="amount" min="0" step="1000" required />
+        </label>
+      </div>
+      <footer class="modal-foot">
+        <div class="modal-foot-right">
+          <button type="button" class="btn ghost" data-close>Cancelar</button>
+          <button type="submit" class="btn primary">Guardar cuota</button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

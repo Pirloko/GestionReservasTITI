@@ -1732,14 +1732,29 @@ function bindEvents() {
     try {
       const email = field(form, "email").value.trim();
       const password = field(form, "password").value;
-      const { data, error } = await window.GC_DB.getSb().auth.signInWithPassword({ email, password });
+      const client = window.GC_DB.getSb();
+      // Limpia sesión local corrupta / desfasada antes de entrar
+      try {
+        await client.auth.signOut({ scope: "local" });
+      } catch {
+        /* ignore */
+      }
+      const { data, error } = await client.auth.signInWithPassword({ email, password });
       if (error) throw error;
       await enterApp(data.session);
     } catch (err) {
       console.error(err);
-      errEl.textContent = err?.message === "Invalid login credentials"
-        ? "Email o contraseña incorrectos"
-        : (err?.message || "No se pudo iniciar sesión");
+      const msg = String(err?.message || "");
+      if (msg === "Invalid login credentials") {
+        errEl.textContent = "Email o contraseña incorrectos";
+      } else if (/JWT issued at future/i.test(msg)) {
+        errEl.textContent =
+          "El reloj de este dispositivo está desfasado. En Ajustes → Fecha y hora, activa “Ajustar automáticamente” y vuelve a intentar.";
+      } else if (/Email not confirmed/i.test(msg)) {
+        errEl.textContent = "Debes confirmar el email en Supabase (o desactiva Confirm email).";
+      } else {
+        errEl.textContent = msg || "No se pudo iniciar sesión";
+      }
       errEl.hidden = false;
     } finally {
       btn.disabled = false;

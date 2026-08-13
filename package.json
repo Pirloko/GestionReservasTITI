@@ -2,6 +2,7 @@
   "name": "gestion-y-cuentas",
   "private": true,
   "scripts": {
-    "dev": "python3 -m http.server 8765 --bind 0.0.0.0 --directory mockup"
+    "dev": "python3 -m http.server 8765 --bind 0.0.0.0 --directory mockup",
+    "build": "node scripts/write-supabase-config.js"
   }
 }

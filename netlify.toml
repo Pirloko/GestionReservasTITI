@@ -1,6 +1,6 @@
 [build]
   publish = "mockup"
-  command = "echo 'static site'"
+  command = "node scripts/write-supabase-config.js"
 
 [[redirects]]
   from = "/*"

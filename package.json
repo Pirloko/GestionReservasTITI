@@ -2,7 +2,8 @@
   "name": "gestion-y-cuentas",
   "private": true,
   "scripts": {
-    "dev": "python3 -m http.server 8765 --bind 0.0.0.0 --directory mockup",
-    "build": "node scripts/write-supabase-config.js"
+    "dev": "python3 -m http.server 8765 --bind 127.0.0.1 --directory mockup",
+    "dev:host": "python3 -m http.server 8765 --bind 0.0.0.0 --directory mockup",
+    "build": "node scripts/write-landing-config.js && node scripts/write-supabase-config.js"
   }
 }

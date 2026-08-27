@@ -1,8 +1,13 @@
 [build]
   publish = "mockup"
-  command = "node scripts/write-supabase-config.js"
+  command = "node scripts/write-landing-config.js && node scripts/write-supabase-config.js"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/acceso"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/acceso/"
+  to = "/app.html"
   status = 200

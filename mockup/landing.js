@@ -30,7 +30,6 @@
     wireWaLink(el, msg);
   });
 
-  wireWaLink(document.getElementById("hero-wa"), cfg.whatsappMessage);
   wireWaLink(document.getElementById("contact-wa"), cfg.whatsappMessage);
   wireWaLink(document.getElementById("fab-wa"), cfg.whatsappMessage);
 

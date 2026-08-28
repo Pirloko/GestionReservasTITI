@@ -29,9 +29,12 @@
 
   <link rel="icon" href="assets/logo-titi.png" type="image/png" />
   <link rel="apple-touch-icon" href="assets/logo-titi.png" />
+  <link rel="preload" as="image" type="image/webp" href="assets/castillo.webp" fetchpriority="high" />
+  <link rel="preload" as="style" href="landing.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="landing.css" />
 
   <script type="application/ld+json">
@@ -131,7 +134,10 @@
 
   <header class="site-nav" id="site-nav">
     <a class="nav-brand" href="#inicio">
-      <img src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="44" height="44" />
+      <picture>
+        <source srcset="assets/logo-titi.webp" type="image/webp" />
+        <img src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="44" height="44" decoding="async" />
+      </picture>
       <span>Titi Mundo Diversión</span>
     </a>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
@@ -150,7 +156,10 @@
     <!-- 1. HERO -->
     <section class="hero" id="inicio">
       <div class="hero-inner reveal">
-        <img class="hero-logo" src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="96" height="96" />
+        <picture>
+          <source srcset="assets/logo-titi.webp" type="image/webp" />
+          <img class="hero-logo" src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="96" height="96" decoding="async" />
+        </picture>
         <p class="hero-eyebrow">Arriendo de juegos inflables en O'Higgins</p>
         <h1>
           <span class="hero-name">Titi</span>
@@ -183,7 +192,10 @@
           <div class="destacadas-slide-wrap is-active" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/castillo.jpeg" alt="Castillo inflable" loading="eager" />
+                <picture>
+                  <source srcset="assets/castillo.webp" type="image/webp" />
+                  <img src="assets/castillo.jpeg" alt="Castillo inflable" width="800" height="800" loading="eager" fetchpriority="high" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Inflables</span>
                 <div class="destacadas-caption">
@@ -195,7 +207,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/tobogan-arcoiris.jpeg" alt="Tobogán arcoíris" loading="lazy" />
+                <picture>
+                  <source srcset="assets/tobogan-arcoiris.webp" type="image/webp" />
+                  <img src="assets/tobogan-arcoiris.jpeg" alt="Tobogán arcoíris" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Inflables</span>
                 <div class="destacadas-caption">
@@ -207,7 +222,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/pack-taca-taca-airhockey.jpeg" alt="Taca-taca y air hockey" loading="lazy" />
+                <picture>
+                  <source srcset="assets/pack-taca-taca-airhockey.webp" type="image/webp" />
+                  <img src="assets/pack-taca-taca-airhockey.jpeg" alt="Taca-taca y air hockey" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Juegos</span>
                 <div class="destacadas-caption">
@@ -219,7 +237,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/atriles.jpeg" alt="Atriles para pintar" loading="lazy" />
+                <picture>
+                  <source srcset="assets/atriles.webp" type="image/webp" />
+                  <img src="assets/atriles.jpeg" alt="Atriles para pintar" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Actividades</span>
                 <div class="destacadas-caption">
@@ -231,7 +252,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/candy-bar.jpeg" alt="Decoración Candy Bar" loading="lazy" />
+                <picture>
+                  <source srcset="assets/candy-bar.webp" type="image/webp" />
+                  <img src="assets/candy-bar.jpeg" alt="Decoración Candy Bar" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Decoración</span>
                 <div class="destacadas-caption">
@@ -243,7 +267,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/coctel-dulce.jpeg" alt="Cóctel dulce" loading="lazy" />
+                <picture>
+                  <source srcset="assets/coctel-dulce.webp" type="image/webp" />
+                  <img src="assets/coctel-dulce.jpeg" alt="Cóctel dulce" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Cócteles</span>
                 <div class="destacadas-caption">
@@ -255,7 +282,10 @@
           <div class="destacadas-slide-wrap" data-hero-slide>
             <article class="destacadas-slide">
               <div class="destacadas-media">
-                <img src="assets/coctel-salado.jpeg" alt="Cóctel salado" loading="lazy" />
+                <picture>
+                  <source srcset="assets/coctel-salado.webp" type="image/webp" />
+                  <img src="assets/coctel-salado.jpeg" alt="Cóctel salado" width="800" height="800" loading="lazy" decoding="async" />
+                </picture>
                 <div class="destacadas-overlay" aria-hidden="true"></div>
                 <span class="destacadas-badge">Cócteles</span>
                 <div class="destacadas-caption">
@@ -277,7 +307,10 @@
       </div>
       <div class="nosotros-grid">
         <div class="nosotros-card reveal">
-          <img src="assets/logo-titi.png" alt="" class="nosotros-logo" loading="lazy" aria-hidden="true" />
+          <picture>
+            <source srcset="assets/logo-titi.webp" type="image/webp" />
+            <img src="assets/logo-titi.png" alt="" class="nosotros-logo" loading="lazy" aria-hidden="true" width="192" height="192" decoding="async" />
+          </picture>
           <p>
             Somos <strong>padre y madre</strong> de un hijo pequeño que también ama divertirse.
             Por eso nació <strong>Titi Mundo Diversión</strong>: sabemos lo importante que es
@@ -326,7 +359,10 @@
       <div class="catalog-grid">
         <article class="cat-card reveal" data-wa-item="Castillo inflable">
           <div class="cat-media">
-            <img src="assets/castillo.jpeg" alt="Castillo inflable con tobogán" loading="lazy" />
+            <picture>
+              <source srcset="assets/castillo.webp" type="image/webp" />
+              <img src="assets/castillo.jpeg" alt="Castillo inflable con tobogán" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Castillo inflable</h3>
@@ -338,7 +374,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Tobogán arcoíris">
           <div class="cat-media">
-            <img src="assets/tobogan-arcoiris.jpeg" alt="Tobogán arcoíris inflable" loading="lazy" />
+            <picture>
+              <source srcset="assets/tobogan-arcoiris.webp" type="image/webp" />
+              <img src="assets/tobogan-arcoiris.jpeg" alt="Tobogán arcoíris inflable" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Tobogán arcoíris</h3>
@@ -350,7 +389,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Taca-taca">
           <div class="cat-media">
-            <img src="assets/tacataca.jpeg" alt="Mesa de taca-taca" loading="lazy" />
+            <picture>
+              <source srcset="assets/tacataca.webp" type="image/webp" />
+              <img src="assets/tacataca.jpeg" alt="Mesa de taca-taca" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Taca-taca</h3>
@@ -362,7 +404,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Mesa air hockey">
           <div class="cat-media">
-            <img src="assets/airHockey.jpeg" alt="Mesa air hockey" loading="lazy" />
+            <picture>
+              <source srcset="assets/airHockey.webp" type="image/webp" />
+              <img src="assets/airHockey.jpeg" alt="Mesa air hockey" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Mesa air hockey</h3>
@@ -374,7 +419,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Atriles para pintar">
           <div class="cat-media">
-            <img src="assets/atriles.jpeg" alt="Atriles para pintar dibujos" loading="lazy" />
+            <picture>
+              <source srcset="assets/atriles.webp" type="image/webp" />
+              <img src="assets/atriles.jpeg" alt="Atriles para pintar dibujos" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Atriles para pintar</h3>
@@ -386,7 +434,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Cumpleaños y candy bar">
           <div class="cat-media">
-            <img src="assets/candy-bar.jpeg" alt="Decoración cumpleaños y candy bar" loading="lazy" />
+            <picture>
+              <source srcset="assets/candy-bar.webp" type="image/webp" />
+              <img src="assets/candy-bar.jpeg" alt="Decoración cumpleaños y candy bar" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Decoración Candy Bar</h3>
@@ -398,7 +449,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Cóctel dulce">
           <div class="cat-media">
-            <img src="assets/coctel-dulce.jpeg" alt="Cóctel dulce para eventos" loading="lazy" />
+            <picture>
+              <source srcset="assets/coctel-dulce.webp" type="image/webp" />
+              <img src="assets/coctel-dulce.jpeg" alt="Cóctel dulce para eventos" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Cóctel dulce</h3>
@@ -410,7 +464,10 @@
         </article>
         <article class="cat-card reveal" data-wa-item="Cóctel salado">
           <div class="cat-media">
-            <img src="assets/coctel-salado.jpeg" alt="Cóctel salado para eventos" loading="lazy" />
+            <picture>
+              <source srcset="assets/coctel-salado.webp" type="image/webp" />
+              <img src="assets/coctel-salado.jpeg" alt="Cóctel salado para eventos" width="800" height="800" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="cat-body">
             <h3>Cóctel salado</h3>
@@ -511,42 +568,60 @@
       </div>
       <div class="gallery-grid reveal">
         <figure class="gallery-item">
-          <img src="assets/instalacion-1.jpeg" alt="Instalación en La Compañía, Graneros" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-1.webp" type="image/webp" />
+            <img src="assets/instalacion-1.jpeg" alt="Instalación en La Compañía, Graneros" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             La Compañía, Graneros
           </figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="assets/instalacion-6.jpeg" alt="Instalación en Nogales, Machalí" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-6.webp" type="image/webp" />
+            <img src="assets/instalacion-6.jpeg" alt="Instalación en Nogales, Machalí" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Nogales, Machalí
           </figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="assets/instalacion-5.jpeg" alt="Instalación en Graneros, Sexta Región" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-5.webp" type="image/webp" />
+            <img src="assets/instalacion-5.jpeg" alt="Instalación en Graneros, Sexta Región" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Graneros, Sexta Región
           </figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="assets/instalacion-4.jpeg" alt="Instalación en Requínoa, Sexta Región" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-4.webp" type="image/webp" />
+            <img src="assets/instalacion-4.jpeg" alt="Instalación en Requínoa, Sexta Región" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Requínoa, Sexta Región
           </figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="assets/instalacion-3.jpeg" alt="Instalación en Rancagua, Sexta Región" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-3.webp" type="image/webp" />
+            <img src="assets/instalacion-3.jpeg" alt="Instalación en Rancagua, Sexta Región" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Rancagua, Sexta Región
           </figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="assets/instalacion-2.jpeg" alt="Instalación en Machalí, Sexta Región" loading="lazy" />
+          <picture>
+            <source srcset="assets/instalacion-2.webp" type="image/webp" />
+            <img src="assets/instalacion-2.jpeg" alt="Instalación en Machalí, Sexta Región" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
           <figcaption class="gallery-location">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Machalí, Sexta Región
@@ -585,14 +660,20 @@
           </div>
         </div>
         <div class="contacto-visual">
-          <img src="assets/logo-titi.png" alt="" loading="lazy" aria-hidden="true" />
+          <picture>
+            <source srcset="assets/logo-titi.webp" type="image/webp" />
+            <img src="assets/logo-titi.png" alt="" loading="lazy" aria-hidden="true" width="192" height="192" decoding="async" />
+          </picture>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <img src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="56" height="56" />
+    <picture>
+      <source srcset="assets/logo-titi.webp" type="image/webp" />
+      <img src="assets/logo-titi.png" alt="Titi Mundo Diversión" width="56" height="56" decoding="async" />
+    </picture>
     <p><strong>Titi Mundo Diversión</strong> — arriendo de juegos inflables, candy bar y decoración de cumpleaños en la Región de O'Higgins.</p>
     <p class="footer-areas">Rancagua · Mostazal · Graneros · Codegua · Machalí · Olivar · Gultro · Coinco · Requínoa · Los Lirios · Lo Miranda · Doñihue</p>
     <p>© <span id="year"></span> Titi Mundo Diversión. Todos los derechos reservados.</p>
@@ -606,7 +687,7 @@
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
   </a>
 
-  <script src="landing-config.js"></script>
-  <script src="landing.js"></script>
+  <script src="landing-config.js" defer></script>
+  <script src="landing.js" defer></script>
 </body>
 </html>

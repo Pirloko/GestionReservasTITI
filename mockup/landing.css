@@ -425,6 +425,14 @@ a {
   background: var(--sky);
 }
 
+.destacadas-media picture,
+.cat-media picture,
+.gallery-item picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .destacadas-media img {
   width: 100%;
   height: 100%;

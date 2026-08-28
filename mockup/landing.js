@@ -41,12 +41,14 @@
   toggle?.addEventListener("click", () => {
     const open = navLinks.classList.toggle("open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
   });
 
   navLinks?.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => {
       navLinks.classList.remove("open");
       toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Abrir menú");
     });
   });
 

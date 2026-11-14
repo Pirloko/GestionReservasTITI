@@ -73,6 +73,33 @@
     revealEls.forEach((el) => el.classList.add("visible"));
   }
 
+  document.querySelectorAll("[data-cat-gallery]").forEach((gallery) => {
+    const track = gallery.querySelector(".cat-slides");
+    const slides = [...track.children];
+    const dotsWrap = gallery.querySelector(".cat-dots");
+    if (slides.length < 2 || !dotsWrap) return;
+    const smooth = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
+    const dots = slides.map((_, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "cat-dot";
+      btn.setAttribute("aria-label", `Ver foto ${i + 1} de ${slides.length}`);
+      btn.addEventListener("click", () => {
+        track.scrollTo({ left: i * track.clientWidth, behavior: smooth });
+      });
+      dotsWrap.appendChild(btn);
+      return btn;
+    });
+
+    const update = () => {
+      const current = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((d, n) => d.setAttribute("aria-pressed", n === current ? "true" : "false"));
+    };
+    track.addEventListener("scroll", update, { passive: true });
+    update();
+  });
+
   const carousel = document.getElementById("hero-carousel");
   if (carousel) {
     const track = document.getElementById("hero-track");

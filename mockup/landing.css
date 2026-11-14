@@ -824,6 +824,74 @@ a {
   transform: scale(1.04);
 }
 
+.cat-media--multi {
+  position: relative;
+}
+
+.cat-slides {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.cat-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-slides:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: -3px;
+}
+
+.cat-media .cat-slide {
+  flex: 0 0 100%;
+  overflow: hidden;
+  scroll-snap-align: center;
+}
+
+.cat-dots {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 50%;
+  display: flex;
+  padding: 0 0.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(26, 39, 68, 0.12);
+  transform: translateX(-50%);
+}
+
+.cat-dot {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cat-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--blue) 25%, white);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.cat-dot[aria-pressed="true"]::after {
+  width: 1.1rem;
+  background: var(--blue);
+}
+
 .cat-media-emoji {
   display: grid;
   place-items: center;
@@ -849,6 +917,53 @@ a {
   text-align: center;
   color: var(--ink);
   line-height: 1.25;
+}
+
+.cat-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 17rem;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--blue) 14%, white);
+  border-radius: var(--radius-sm);
+  background: var(--sky);
+  overflow: hidden;
+}
+
+.cat-spec {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+}
+
+.cat-spec + .cat-spec {
+  border-left: 1px solid color-mix(in srgb, var(--blue) 14%, white);
+}
+
+.cat-spec dt {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.cat-spec dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--blue);
+}
+
+.cat-spec dd span {
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
 .cat-wa {
@@ -1266,6 +1381,19 @@ a {
   .cat-body h3 {
     font-size: 0.88rem;
     line-height: 1.2;
+  }
+
+  .cat-spec {
+    padding: 0.4rem 0.15rem;
+  }
+
+  .cat-spec dt {
+    font-size: 0.56rem;
+    letter-spacing: 0.03em;
+  }
+
+  .cat-spec dd {
+    font-size: 0.98rem;
   }
 
   .cat-wa {
